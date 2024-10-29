@@ -1,4 +1,5 @@
 package com.example.ecommerce.controller;
+import com.example.ecommerce.config.AppConstants;
 import com.example.ecommerce.payload.CategoryDTO;
 import com.example.ecommerce.payload.CategoryResponse;
 import com.example.ecommerce.service.CategoryService;
@@ -15,9 +16,15 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
+
    @GetMapping("/public/categories")
-    public ResponseEntity<CategoryResponse> getAllCategories(){
-        CategoryResponse categoryResponse = categoryService.getAllCategories();
+    public ResponseEntity<CategoryResponse> getAllCategories(
+            @RequestParam(name = "pageNumber",defaultValue = AppConstants.PAGE_NUMBER,required = false) Integer pageNumber,
+            @RequestParam(name = "pageSize",defaultValue = AppConstants.PAGE_SIZE,required = false) Integer pageSize,
+            @RequestParam(name="sortBy",defaultValue = AppConstants.SORT_CATEGORIES_BY,required = false) String sortBy,
+            @RequestParam(name = "sortOrder",defaultValue = AppConstants.SORT_DIR,required = false) String sortOrder
+            ){
+        CategoryResponse categoryResponse = categoryService.getAllCategories(pageNumber, pageSize,sortBy,sortOrder);
         return new ResponseEntity<>(categoryResponse,HttpStatus.OK);
         
     }
@@ -28,9 +35,9 @@ public class CategoryController {
         return new ResponseEntity<>(savedCategoryDTO,HttpStatus.CREATED);
     }
     @DeleteMapping("/admin/public/categories/{categoryId}")
-    public ResponseEntity<String> deleteCategory(@PathVariable Long categoryId){
-            String status = categoryService.deleteCategory(categoryId);
-           return new ResponseEntity<>(status, HttpStatus.OK);
+    public ResponseEntity<CategoryDTO> deleteCategory(@PathVariable Long categoryId){
+        CategoryDTO categoryDTO = categoryService.deleteCategory(categoryId);
+        return new ResponseEntity<>(categoryDTO, HttpStatus.OK);
     }
 
 

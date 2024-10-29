@@ -6,7 +6,7 @@ import io.swagger.v3.oas.annotations.info.Info;
 @OpenAPIDefinition(
         info = @Info(
                 description = "eCommerce",
-                title = "Udemy course",
+                title = "Nuray Muxtarli",
                 version = "1.0"
 
         )
