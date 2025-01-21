@@ -1,2 +1,2 @@
 TODO LIST FOR PROJECT
-Create H2 database
+Cookie Based Authentication

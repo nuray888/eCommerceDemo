@@ -6,7 +6,7 @@ public class ResourceNotFoundexception extends RuntimeException {
     String fieldName;
     Long fieldId;
 
-    public ResourceNotFoundexception() {
+    public ResourceNotFoundexception(String userNotFound) {
     }
 
     public ResourceNotFoundexception(String field, String resourceName, String fieldName) {

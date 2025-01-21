@@ -49,6 +49,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public CategoryDTO createCategory(CategoryDTO categoryDTO) {
+
         Category category = modelMapper.map(categoryDTO, Category.class);
         Category categoryFromDB = categoryRepository.findByCategoryName(category.getCategoryName());
         if (categoryFromDB != null)

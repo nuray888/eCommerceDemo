@@ -13,4 +13,8 @@ import io.swagger.v3.oas.annotations.info.Info;
 )
 public class OpenApiConfig {
 }
-
+//jkcfreif
+//! Burda sehv var
+//? Bura melumat setridi
+//* BU setir burdadi
+//todo: Burda bunu etmelisen
